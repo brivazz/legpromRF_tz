@@ -1,11 +1,12 @@
-![CI](https://github.com/brivazz/legpromRF_tz/actions/workflows/code-checker.yml/badge.svg)![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/brivazz/legpromRF_tz)
+![CI](https://github.com/brivazz/legpromRF_tz/actions/workflows/code-checker.yml/badge.svg)
+![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/brivazz/legpromRF_tz)
 ![GitHub language count](https://img.shields.io/github/languages/count/brivazz/legpromRF_tz)![GitHub top language](https://img.shields.io/github/languages/top/brivazz/legpromRF_tz)![Github Repository Size](https://img.shields.io/github/repo-size/brivazz/legpromRF_tz)
 
 # Обогащение данных о рисках по ИНН
 
 ### Задание
 
-1) Вытащить и записать в базу всю возможную информацию о рисках компании по ИНН при помощи сервиса https://damia.ru/apiscoring
+1) Вытащить и записать в базу всю возможную информацию о рисках компании по ИНН при помощи сервиса <https://damia.ru/apiscoring>
 2) Оформить API эндпоинт с помощью fastapi, который будет возвращать эти данные
 3) Небольшой фронтик (буквально визуализировать данные)
 4) Оформить всё в докер и прислать архив
