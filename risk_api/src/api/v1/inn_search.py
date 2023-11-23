@@ -1,5 +1,6 @@
 """API для получения информации о скоринге по инн."""
 
+import os
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -8,7 +9,9 @@ from models.errors import InnError
 from services.form_service import RiskService, get_risk_service
 
 form_router = APIRouter()
-templates = Jinja2Templates(directory='templates')
+
+templates_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+templates = Jinja2Templates(directory=templates_dir)
 
 
 @form_router.get(
