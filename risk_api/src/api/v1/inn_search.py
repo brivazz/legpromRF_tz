@@ -2,11 +2,13 @@
 
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi.templating import Jinja2Templates
 from models.errors import InnError
 from services.form_service import RiskService, get_risk_service
 
 form_router = APIRouter()
+templates = Jinja2Templates(directory='templates')
 
 
 @form_router.get(
@@ -19,12 +21,16 @@ form_router = APIRouter()
 )
 async def inn_info(
     inn: int,
+    request: Request,
     service: RiskService = Depends(get_risk_service),
 ) -> dict[str, Any] | list[None]:
     """Получить информацию."""
     try:
         if info := await service.get_info(inn):
-            return info  # type: ignore[no-any-return]
+            return templates.TemplateResponse(  # type: ignore[no-any-return]
+                'index.html',
+                {'request': request, 'data': info},
+            )
         return []
     except InnError as err:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(err))  # type: ignore[no-any-return]
