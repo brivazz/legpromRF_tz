@@ -4,7 +4,6 @@ import contextlib
 from collections.abc import AsyncIterator
 
 import fastapi
-import uvicorn
 from api.v1 import inn_search
 from core.config import settings
 from db.mongo import mongo_storage
@@ -35,7 +34,3 @@ def init_app() -> fastapi.FastAPI:
 app = init_app()
 
 app.include_router(inn_search.form_router, prefix='/api/v1')
-
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', host='127.0.0.1', port=8000, reload=True)
